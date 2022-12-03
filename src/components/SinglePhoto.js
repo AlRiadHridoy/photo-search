@@ -112,7 +112,7 @@ function SinglePhoto() {
             Download actual size
           </button>
           <button
-            onClick={() => downloadImg(largeImageURL)}
+            onClick={() => downloadImg(img)}
             className=" bg-pink-700 hover:bg-pink-600 duration-300 px-4 py-2 rounded-md text-slate-100"
           >
             Download small size
