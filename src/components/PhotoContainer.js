@@ -7,7 +7,7 @@ function PhotoContainer() {
   if (error.state) {
     return (
       <div className="flex flex-col gap-4 justify-center items-center dark:text-sky-100 text-sky-800">
-        <h1 className="text-5xl text-center">NAiS😷</h1>
+        <h1 className="text-5xl text-center">😷</h1>
         <h2 className="text-2xl text-center flex items-center gap-2">
           {error.msg}
           <TbServerOff className=" text-red-500" />

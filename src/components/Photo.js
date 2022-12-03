@@ -11,14 +11,14 @@ function Photo({ item }) {
     <Link to={`/photo=${id}`} className="btn btn-primary btn-details">
       <div
         className="img_container flex flex-col relative duration-300 overflow-hidden rounded-md"
-        onClick={() => setSingleImg(item)}
+        onClick={() => setSingleImg(id)}
       >
         <img
           src={img}
           alt={type}
           className="w-full min-h-[14rem] max-h-[14rem] sm:min-h-[17rem] sm:max-h-[17rem]"
         />
-        <div className="user_info absolute bottom-[-100%] left-0 right-0 backdrop-blur-2xl bg-white/30 text-green-300 rounded-sm p-2 flex items-center gap-2 justify-between">
+        <div className="user_info absolute bottom-[-100%] left-0 right-0 backdrop-blur-2xl bg-white/30 text-slate-200 rounded-sm p-2 flex items-center gap-2 justify-between">
           <div className="">
             <div className="flex gap-2 items-center">
               <BsFillCameraFill /> {user}

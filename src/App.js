@@ -8,7 +8,7 @@ import SinglePhoto from "./components/SinglePhoto.js";
 
 
 function App() {
-  const { theme } = useGlobalContext();
+  const {theme} = useGlobalContext();
   return (
     <main className={`root ${theme}`}>
       <div

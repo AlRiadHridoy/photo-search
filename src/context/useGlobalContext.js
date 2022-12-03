@@ -46,7 +46,6 @@ const AppProvider = ({ children }) => {
       setTemp(false);
     } catch (error) {
       setIsLoading(false);
-      console.log(error)
       setError({ state: true, msg: "একটু পরে আবার চেষ্টা করুন" });
     }
   };
@@ -64,7 +63,6 @@ const AppProvider = ({ children }) => {
     setTemp(true);
     setPage(1)
     setError(false);
-    console.log(url)
   };
 
   useEffect(() => {
@@ -90,7 +88,6 @@ const AppProvider = ({ children }) => {
         window.innerHeight + window.scrollY >= document.body.scrollHeight - 2
       ) {
         setisFetching(true);
-        console.log("first");
       }
     });
     return () => window.removeEventListener("scroll", event);
