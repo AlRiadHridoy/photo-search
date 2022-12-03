@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { tempData } from "../components/data";
+import { useNavigate } from "react-router-dom";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+  const navigate = useNavigate()
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
@@ -14,6 +16,7 @@ const AppProvider = ({ children }) => {
   const [error, setError] = useState({ state: false, msg: '' });
 
 
+
   const [singleImg, setSingleImg] = useState({})
   
   // change nav round style
@@ -22,8 +25,8 @@ const AppProvider = ({ children }) => {
   const [theme, setTheme] = useState("dark")
 
   const api_key = "31720365-4b62856b99eadabab89ac329d";
-  const url = `https://pixabay.com/api/?key=${api_key}&image_type=all&page=${page}&per_page=10&q=${
-    query.replace(" ", "+") || "hacker"
+  const url = `https://pixabay.com/api/?key=${api_key}&page=${page}&per_page=10&q=${
+    query.replace(" ", "+") || "trees"
   }&image_type=photo&min_height=400&min_width=400`;
 
   const fetchImage = async () => {
@@ -63,6 +66,8 @@ const AppProvider = ({ children }) => {
     setTemp(true);
     setPage(1)
     setError(false);
+    navigate("/");
+    console.log("working")
   };
 
   useEffect(() => {

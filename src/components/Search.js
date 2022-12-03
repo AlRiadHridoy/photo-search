@@ -5,9 +5,9 @@ import {BsFillMoonFill} from "react-icons/bs"
 import img from "../images/icon.png"
 import { useGlobalContext } from '../context/useGlobalContext'
 
+
 function Search() {
   const { query, setQuery, handleSubmit, navRound, setTheme, theme } = useGlobalContext();
-
   return (
     <section className="search sticky top-0 z-50 ">
       <form

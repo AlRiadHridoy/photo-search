@@ -41,18 +41,18 @@ function SinglePhoto() {
 
   //Download images
 
-  const downloadImg = () => {
-    fetch(largeImageURL)
+  const downloadImg = (imgUrl) => {
+    fetch(imgUrl)
       .then((response) => response.blob())
       .then((blob) => {
-      console.log(blob)
-      let blobUrl = window.URL.createObjectURL(blob);
-      let a = document.createElement("a");
-      a.download = `troxTele-${user}.${blob.type.replace("image/", "")}`;
-      a.href = blobUrl;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+        console.log(blob);
+        let blobUrl = window.URL.createObjectURL(blob);
+        let a = document.createElement("a");
+        a.download = `troxTele-${user}.${blob.type.replace("image/", "")}`;
+        a.href = blobUrl;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
       });
   };
 
@@ -67,16 +67,16 @@ function SinglePhoto() {
 
   return (
     <div className="container z-100 flex flex-col justify-center items-center text-slate-700 dark:text-slate-900">
-      <div className="img_content flex flex-col md:flex-row gap-2 rounded-lg bg-slate-400/50 backdrop-blur-xl p-4">
+      <div className="img_content grid grid_col_2fr max-w-3xl justify-center items-center gap-2 rounded-lg bg-slate-400/50 backdrop-blur-xl p-4">
         <div className="img">
           <img
-            className="rounded-md max-h-[20rem] max-w-[35rem] w-full"
+            className="rounded-md max-h-[22rem] w-full"
             src={img}
             alt={type}
           />
         </div>
 
-        <div className="info p-5 font-medium text-xl">
+        <div className="info p-5 font-medium text-xl max-w-lg">
           <div className="user_img mb-3">
             <img
               className=" w-14 rounded-xl md:w-20 mb-2"
@@ -102,17 +102,25 @@ function SinglePhoto() {
               Tags: <span className="font-semibold"> {tags}</span>
             </span>
           </div>
+        </div>
 
-          <div className="download mt-8">
-            <button onClick={downloadImg}
-              className=" bg-pink-700 px-4 py-2 rounded-md text-slate-100">
-              Download
-            </button>
-          </div>
+        <div className="download mt-8 flex flex-wrap gap-3 col-span-full justify-self-center">
+          <button
+            onClick={() => downloadImg(largeImageURL)}
+            className=" bg-pink-700 hover:bg-pink-600 duration-300 px-4 py-2 rounded-md text-slate-100"
+          >
+            Download actual size
+          </button>
+          <button
+            onClick={() => downloadImg(largeImageURL)}
+            className=" bg-pink-700 hover:bg-pink-600 duration-300 px-4 py-2 rounded-md text-slate-100"
+          >
+            Download small size
+          </button>
         </div>
       </div>
 
-      <button className="back_btn font-semibold text-slate-100 mt-5 px-4 py-2 rounded-md bg-teal-500 dark:bg-teal-500">
+      <button className="back_btn font-semibold text-slate-100 mt-5 px-4 py-2 rounded-md bg-teal-500 hover:bg-teal-400 duration-300">
         <Link to="/">Back Home</Link>
       </button>
     </div>

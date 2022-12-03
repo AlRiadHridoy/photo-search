@@ -1,14 +1,13 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import PhotoContainer from "./components/PhotoContainer.js";
 import Search from "./components/Search.js";
+import SinglePhoto from "./components/SinglePhoto.js";
 import Style from "./components/Style.js";
 import { useGlobalContext } from "./context/useGlobalContext.js";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import SinglePhoto from "./components/SinglePhoto.js";
-
 
 function App() {
-  const {theme} = useGlobalContext();
+  const { theme } = useGlobalContext();
   return (
     <main className={`root ${theme}`}>
       <div
@@ -18,13 +17,11 @@ function App() {
       >
         <div className="container mx-lg m-auto relative">
           {theme === "dark" && <Style />}
-          <BrowserRouter>
-            <Search />
-            <Routes>
-              <Route path="/" element={<PhotoContainer />} />
-              <Route path={`/photo=:id`} element={<SinglePhoto />} />
-            </Routes>
-          </BrowserRouter>
+          <Search />
+          <Routes>
+            <Route path="/" element={<PhotoContainer />} />
+            <Route path={`/photo=:id`} element={<SinglePhoto />} />
+          </Routes>
         </div>
       </div>
     </main>
